@@ -1,0 +1,104 @@
+/*
+ * NodoArbol.cpp
+ *
+ *  Created on: 11/11/2011
+ *      Author: jlezcano
+ */
+
+#include "NodoArbol.h"
+#include <iostream>
+
+using namespace std;
+
+/******************************************************************************/
+
+NodoArbol::NodoArbol(string tag,string* contenido){
+
+	this->tag = tag;
+	this->contenido = contenido;
+	this->hijoIzq = NULL;
+	this->hermanoDer = NULL;
+	this->punteroAlPadre = false;
+
+	cout<<"Se contruyo NodoArbol "<<(unsigned)this<<endl;
+
+}
+/******************************************************************************/
+NodoArbol::~NodoArbol() {
+
+	cout<<"Se destruyo NodoArbol "<<(unsigned)this<<endl;
+}
+
+/******************************************************************************/
+
+NodoArbol::NodoArbol(const NodoArbol& otroNodo){
+
+	otroNodo.tag = this->tag;
+	otroNodo.contenido = this->contenido;
+	otroNodo.hijoIzq = this->hijoIzq;
+	otroNodo.hermanoDer = this->hermanoDer;
+	otroNodo.punteroAlPadre = this->punteroAlPadre;
+}
+
+/******************************************************************************/
+
+void NodoArbol::setTag(string tag){
+
+	this->tag = tag;
+}
+
+/******************************************************************************/
+
+string NodoArbol::getTag(){
+
+	return (this->tag);
+}
+/******************************************************************************/
+
+void NodoArbol::setContenido(string* contenido){
+
+	this->contenido = contenido;
+}
+
+/******************************************************************************/
+
+string* NodoArbol::getContenido(){
+
+	return(this->contenido);
+}
+
+/******************************************************************************/
+
+void NodoArbol::setHijoIzq(NodoArbol* unNodo){
+
+	this->hijoIzq = unNodo;
+}
+
+/******************************************************************************/
+
+NodoArbol* NodoArbol::getHijoIzq(){
+
+	return (this->hijoIzq);
+}
+
+/******************************************************************************/
+
+void NodoArbol::setHermanoDer(NodoArbol* unNodo){
+
+	this->hermanoDer = unNodo;
+}
+/******************************************************************************/
+
+NodoArbol* NodoArbol::getHermanoDer(){
+
+	return (this->hermanoDer);
+}
+
+bool NodoArbol::esPunteroAlPadre(){
+
+	return (this->punteroAlPadre == true);
+}
+/******************************************************************************/
+
+
+
