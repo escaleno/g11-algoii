@@ -18,7 +18,7 @@ NodoArbol::NodoArbol(string tag,string* contenido){
 	this->contenido = contenido;
 	this->hijoIzq = NULL;
 	this->hermanoDer = NULL;
-	this->punteroAlPadre = false;
+	this->padre = NULL;
 
 	cout<<"Se contruyo NodoArbol "<<(unsigned)this<<endl;
 
@@ -37,7 +37,7 @@ NodoArbol::NodoArbol(const NodoArbol& otroNodo){
 	otroNodo.contenido = this->contenido;
 	otroNodo.hijoIzq = this->hijoIzq;
 	otroNodo.hermanoDer = this->hermanoDer;
-	otroNodo.punteroAlPadre = this->punteroAlPadre;
+	otroNodo.padre = this->padre;
 }
 
 /******************************************************************************/
@@ -94,10 +94,21 @@ NodoArbol* NodoArbol::getHermanoDer(){
 	return (this->hermanoDer);
 }
 
-bool NodoArbol::esPunteroAlPadre(){
+/******************************************************************************/
 
-	return (this->punteroAlPadre == true);
+void NodoArbol::setPadre(NodoArbol* nuevoPadre){
+
+	this->padre = nuevoPadre;
 }
+
+/******************************************************************************/
+
+NodoArbol* NodoArbol::getPadre(){
+
+	return this->padre;
+}
+
+
 /******************************************************************************/
 
 
