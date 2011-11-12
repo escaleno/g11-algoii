@@ -6,9 +6,8 @@
  */
 
 
-/*NodoArbol modela cada nodo de un arbol n-ario cada nodo esta compuesto por una puntero a hijo
- * mas a la izquierda y por un puntero a su hermano mas a la derecha, en el caso de que no tenga hermano a la derecha
- * apunta a su padre
+/*NodoArbol modela cada nodo de un arbol n-ario, cada nodo esta formado por un puntero al primer hijo de la izquierda, un puntero al primer
+ * hermano mas a la derecha y un puntero al padre.
  *
  * REFERENCIAS:
  * tag:es el nombre de una etiqueta leida de un archivo xml, no contiene espacios
@@ -28,10 +27,9 @@ class NodoArbol {
 private:
 		 string tag; //tag proveniente del xml
 		 string* contenido; //contenido de la hoja
-		 NodoArbol* hijoIzq;  //hijo izquierdo
-		 NodoArbol* hermanoDer; //hermano derecho
-		 bool punteroAlPadre; /*si no tiene hermano derecho apunta al padre entonces esta
-		 	 	 	 	 	  variable vale TRUE, en caso que tenga hermano derecho vale FALSE*/
+		 NodoArbol* hijoIzq;  //puntero hijo izquierdo
+		 NodoArbol* hermanoDer; //puntero hermano derecho
+		 NodoArbol* padre; //puntero al padre
 public:
 
 		 /*************************************************************************************************/
@@ -88,8 +86,12 @@ public:
 
 		 /*************************************************************************************************/
 
-		 /*POST:retorna TRUE si el puntero al hermano derecho apunta al padre, FALSE de lo contrario*/
-		 bool esPunteroAlPadre();
+		/*POST:asigna nuevoPadre como padre*/
+		 void setPadre(NodoArbol* nuevoPadre);
+		 /*************************************************************************************************/
+
+		 /*POST:retorna un puntero al padre*/
+		 NodoArbol* getPadre();
 
 		 /*************************************************************************************************/
 
