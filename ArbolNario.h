@@ -18,11 +18,11 @@ class ArbolNario
         /*************************************************************************************************/
 
         /*POST: elimina el arbol y libera memoria*/
-        virtual ~ArbolNario();
+        ~ArbolNario();
 
         /*************************************************************************************************/
 
-       /*POST: Fevuelve TRUE si el arbol esá vacío y FALSE si la raíz apunta a algo*/
+       /*POST: Devuelve TRUE si el arbol esá vacío y FALSE si la raíz apunta a algo*/
         bool estaVacio();
 
         /*************************************************************************************************/
