@@ -1,5 +1,5 @@
 #ifndef ARBOLNARIO_H
-#define ARBOLN-ARIO_H
+#define ARBOLNARIO_H
 
 #include "NodoArbol.h"
 
@@ -8,11 +8,12 @@ class ArbolNario
 {
     private:
         NodoArbol* raiz;
+        NodoArbol* actual;
 
     public:
         /*************************************************************************************************/
 
-        /*POST:creal el arbol con la raíz apuntando a NULL*/
+        /*POST:creal el arbol con la raíz y la posicion actual apuntando a NULL*/
         ArbolNario();
 
         /*************************************************************************************************/
@@ -22,13 +23,33 @@ class ArbolNario
 
         /*************************************************************************************************/
 
-       /*POST: Devuelve TRUE si el arbol esá vacío y FALSE si la raíz apunta a algo*/
+        /*POST: Devuelve TRUE si el arbol esá vacío y FALSE si la raíz apunta a algo*/
         bool estaVacio();
 
         /*************************************************************************************************/
 
-       /*POST: Carga TODOS los datos del archivo en el arbol*/
-        bool cargar(/*ArchivoXML*/);
+        /*POST: Verifica que el Tag no exista en sus padres*/
+        bool existeTag(string tag);
+
+        /*************************************************************************************************/
+
+        /*POST: Agrega el nombre del Tag a su hijo y pocisiona el nodo actual al de su hijo*/
+        void agregar(string tag);
+
+        /*************************************************************************************************/
+
+        /*POST: Agrega el contenido a del Tag en el nodo*/
+        void agregarContenido(string value);
+
+        /*************************************************************************************************/
+
+        /*POST: El nodo actual retorna al nodo de su padre*/
+        void volver();
+
+        /*************************************************************************************************/
+
+        /*POST: Agrega el nombre del Tag a su hijo y pocisiona el nodo actual al de su hijo*/
+        string getTag();
 
         /*************************************************************************************************/
 
@@ -45,11 +66,10 @@ class ArbolNario
         las funciones imprimir y para implementar de alguna forma recursiva la función buscar().*/
         ArbolNario* Subarbol(NodoArbol*);
 
+        /*POST: Borra todos los Tag existentes en el arbol*/
+        void borrar();
 
-
-
-
-
+        /*************************************************************************************************/
 
 };
 

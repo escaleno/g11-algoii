@@ -18,8 +18,8 @@
 #ifndef NODOARBOL_H_
 #define NODOARBOL_H_
 
-#include <string>
-
+#include <fstream>
+#include <iostream>
 using namespace std;
 
 class NodoArbol {
@@ -35,7 +35,7 @@ public:
 		 /*************************************************************************************************/
 
 		 /*POST:creal el nodo con el tag llamado "tag", y setea el contenido con el puntero "contenido"*/
-		 NodoArbol(string tag,string* contenido);
+		 NodoArbol(string tag);
 
 		 /*************************************************************************************************/
 
@@ -44,7 +44,7 @@ public:
 
 		 /*************************************************************************************************/
 		 /*POST:constructor de copia*/
-		 NodoArbol(const NodoArbol& otroNodo);
+		 NodoArbol(NodoArbol& otroNodo);
 
 		 /*************************************************************************************************/
 
