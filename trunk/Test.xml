@@ -1,0 +1,10 @@
+<?xml version="1.0">
+<raiz>
+    <hijo1>
+        <nieto1>Primer nieto del Primer Hijo</nieto1>
+        <nieto2>Segundo nieto del Primer Hijo</nieto2>
+    </hijo1>
+    <hijo2>
+        <nieto1>Primer Nieto del Segundo Hijo</nieto1>
+    </hijo2>
+</raiz>

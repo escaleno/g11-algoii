@@ -12,26 +12,26 @@ using namespace std;
 
 /******************************************************************************/
 
-NodoArbol::NodoArbol(string tag,string* contenido){
+NodoArbol::NodoArbol(string tag){
 
 	this->tag = tag;
-	this->contenido = contenido;
+	this->contenido = NULL;
 	this->hijoIzq = NULL;
 	this->hermanoDer = NULL;
 	this->padre = NULL;
 
-	cout<<"Se contruyo NodoArbol "<<(unsigned)this<<endl;
+	//cout<<"Se contruyo NodoArbol "<<(unsigned)this<<endl;
 
 }
 /******************************************************************************/
 NodoArbol::~NodoArbol() {
 
-	cout<<"Se destruyo NodoArbol "<<(unsigned)this<<endl;
+	//cout<<"Se destruyo NodoArbol "<<(unsigned)this<<endl;
 }
 
 /******************************************************************************/
 
-NodoArbol::NodoArbol(const NodoArbol& otroNodo){
+NodoArbol::NodoArbol(NodoArbol& otroNodo){
 
 	otroNodo.tag = this->tag;
 	otroNodo.contenido = this->contenido;
