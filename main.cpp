@@ -5,12 +5,13 @@ using namespace std;
 
 int main()
 {
-    ParserXML* parser = new ParserXML("C:\\Users\\gkgk\\Desktop\\Juani\\TPs\\TP3\\TP3\\bin\\Debug\\Test.xml");
+    ParserXML* parser = new ParserXML("D:\\Documents\\Uba\\Algoritmos II\\C++\\tpXMLsvn\\Test.xml");
     ArbolNario* aXML = parser->procesarXML();
-    if(!aXML->estaVacio())
+    if(aXML)
     {
         //pregunto que desea imprimir antes de imprimir
-        aXML->imprimir();
+
+        aXML->imprimir("nieto4");
     }
     else
     {

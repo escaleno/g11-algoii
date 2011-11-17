@@ -36,8 +36,8 @@ ArbolNario* ParserXML::procesarXML()
             string str (buff);
             if (!this->separarDatos(buff,aXml))
             {
-                aXml->borrar();
-                break;
+                delete aXml;
+                return 0;
             }
         }
     }

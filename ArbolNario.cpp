@@ -6,6 +6,11 @@ ArbolNario::ArbolNario()
     this->actual = NULL;
 }
 
+ArbolNario::~ArbolNario()
+{
+	this->LiberarMemoria(this->raiz);
+}
+
 bool ArbolNario::estaVacio()
 {
     return (this->raiz==NULL && this->actual==NULL);
@@ -91,9 +96,12 @@ NodoArbol* ArbolNario::buscar(/*TAG*/)
     return NULL;
 }
 
-void ArbolNario::imprimir()
+void ArbolNario::imprimir(string tag)
 {
-    cout << "Imprime el Contenido del XML" << endl;
+    NodoArbol* buscado = this->buscar(this->raiz,tag);
+    cout << "Tag encontrado: " << *(buscado->getContenido()) << endl ;
+
+
 }
 
 ArbolNario* ArbolNario::Subarbol(NodoArbol* nuevoSubarbol)
@@ -103,7 +111,46 @@ ArbolNario* ArbolNario::Subarbol(NodoArbol* nuevoSubarbol)
     return nuevoArbol;
 
 }
-void ArbolNario::borrar()
+void ArbolNario::LiberarMemoria (NodoArbol *Ptr)
 {
-    cout << "Borra los TAG del Arbol!!!" << endl;
+//Caso base. El puntero no apunta a ningún nodo. No hacemos nada.
+//Caso recursivo. El puntero apunta al menos a un nodo. Eliminamos recursivamente
+//todos los nodos.
+	if (Ptr != NULL)
+	{
+	   LiberarMemoria (Ptr -> getHijoIzq());
+	   LiberarMemoria (Ptr -> getHermanoDer());
+	   delete (Ptr);
+	}
+};
+
+
+NodoArbol* ArbolNario::buscar(NodoArbol* raiz,string valor){
+
+
+	if(raiz->esHoja()){
+		if (raiz->getTag() == valor) return raiz;
+		else
+			return 0;
+	}
+
+
+	NodoArbol* nodo = 0;
+	NodoArbol* hijo = raiz->getHijoIzq();
+
+	while(hijo && !nodo){ //tiene hijo y no encontro
+		nodo = buscar(hijo,valor);
+		hijo = hijo->getHermanoDer();
+	}
+
+
+	if((!nodo) && (raiz->getTag() == valor)) //verifica que sea la raiz
+		nodo = raiz;
+
+	return nodo;
 }
+
+NodoArbol* ArbolNario::getRaiz(){
+	return this->raiz;
+}
+

@@ -16,6 +16,8 @@ class ArbolNario
         /*POST:creal el arbol con la raíz y la posicion actual apuntando a NULL*/
         ArbolNario();
 
+        void LiberarMemoria (NodoArbol *Ptr);
+
         /*************************************************************************************************/
 
         /*POST: elimina el arbol y libera memoria*/
@@ -59,7 +61,7 @@ class ArbolNario
         /*************************************************************************************************/
 
         /*POST: salida del árbol por pantalla*/
-        void imprimir();
+        void imprimir(string tag);
 
         /*************************************************************************************************/
         /*POST: Crea un subarbol a partir del nodo que se la pase como parámetro. No sé bien si va a servir esto. Capaz sea útil para
@@ -70,7 +72,9 @@ class ArbolNario
         void borrar();
 
         /*************************************************************************************************/
+        NodoArbol* buscar(NodoArbol* raiz,string valor);
 
+        NodoArbol* getRaiz();
 };
 
 #endif // ARBOL N-ARIO_H
