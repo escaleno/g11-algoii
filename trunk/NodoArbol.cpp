@@ -26,7 +26,8 @@ NodoArbol::NodoArbol(string tag){
 /******************************************************************************/
 NodoArbol::~NodoArbol() {
 
-	//cout<<"Se destruyo NodoArbol "<<(unsigned)this<<endl;
+	if (this->contenido!=NULL)
+		delete this->contenido;
 }
 
 /******************************************************************************/
@@ -110,6 +111,12 @@ NodoArbol* NodoArbol::getPadre(){
 
 
 /******************************************************************************/
+
+bool NodoArbol::esHoja(){
+
+	return (this->hijoIzq == NULL);
+}
+
 
 
 
