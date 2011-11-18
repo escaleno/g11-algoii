@@ -97,6 +97,7 @@ NodoArbol* NodoArbol::getHermanoDer(){
 
 /******************************************************************************/
 
+
 void NodoArbol::setPadre(NodoArbol* nuevoPadre){
 
 	this->padre = nuevoPadre;
