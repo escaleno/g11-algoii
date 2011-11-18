@@ -11,6 +11,7 @@ class ArbolNario
         NodoArbol* actual;
 
     public:
+
         /*************************************************************************************************/
 
         /*POST:creal el arbol con la raíz y la posicion actual apuntando a NULL*/
@@ -61,8 +62,10 @@ class ArbolNario
         /*************************************************************************************************/
 
         /*POST: salida del árbol por pantalla*/
-        void imprimir(string tag);
+        void imprimir(NodoArbol* nodo, unsigned *);
 
+        /*POST: salida del árbol por pantalla*/
+        void imprimir(string tag);
         /*************************************************************************************************/
         /*POST: Crea un subarbol a partir del nodo que se la pase como parámetro. No sé bien si va a servir esto. Capaz sea útil para
         las funciones imprimir y para implementar de alguna forma recursiva la función buscar().*/

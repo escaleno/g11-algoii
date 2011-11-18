@@ -16,6 +16,36 @@ bool ArbolNario::estaVacio()
     return (this->raiz==NULL && this->actual==NULL);
 }
 
+
+void ArbolNario::imprimir(NodoArbol* nodo, unsigned * nivel){
+
+  if (nodo != 0) {
+
+    //******bloque de operaciones a realizar en el nodo durante el recorrido******
+    for (unsigned i=0; i<*nivel; i++)
+    {
+        cout << '\t' << "|";
+    }
+    cout << "->";
+    cout << nodo->getTag();
+
+    if (nodo->getHijoIzq()) *nivel+=1;
+    else
+    {
+        if ((!nodo->getHermanoDer())&&(*nivel !=0)) *nivel-=1;
+        cout << " = " << *(nodo->getContenido());
+    }
+    cout << endl;
+    //*****fin del bloque*********************************************************
+    imprimir(nodo->getHijoIzq(), nivel);
+    imprimir(nodo->getHermanoDer(), nivel);
+
+
+
+  }
+
+}
+
 bool ArbolNario::existeTag(string tag)
 {
     NodoArbol* aux=actual;

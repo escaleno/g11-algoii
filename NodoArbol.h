@@ -32,6 +32,7 @@ private:
 		 NodoArbol* padre; //puntero al padre
 public:
 
+
 		 /*************************************************************************************************/
 
 		 /*POST:creal el nodo con el tag llamado "tag", y setea el contenido con el puntero "contenido"*/
