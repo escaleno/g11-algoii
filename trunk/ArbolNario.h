@@ -2,6 +2,7 @@
 #define ARBOLNARIO_H
 
 #include "NodoArbol.h"
+//#include "Lista.h"
 
 
 class ArbolNario
@@ -17,16 +18,22 @@ class ArbolNario
         /*POST:creal el arbol con la raíz y la posicion actual apuntando a NULL*/
         ArbolNario();
 
+        /*************************************************************************************************/
+
         void LiberarMemoria (NodoArbol *Ptr);
 
         /*************************************************************************************************/
 
-        /*POST: elimina el arbol y libera memoria*/
+        /*POST: elimina el arbol y libera la memoria utilizada por el mismo*/
         ~ArbolNario();
 
         /*************************************************************************************************/
+        /*POST:retorona un puntero a la raiz*/
+        NodoArbol* getRaiz();
 
-        /*POST: Devuelve TRUE si el arbol esá vacío y FALSE si la raíz apunta a algo*/
+        /*************************************************************************************************/
+
+        /*POST: Devuelve TRUE si el arbol no tienen ningun elemento, FALSE si tiene al menos uno*/
         bool estaVacio();
 
         /*************************************************************************************************/
@@ -47,7 +54,7 @@ class ArbolNario
         /*************************************************************************************************/
 
         /*POST: El nodo actual retorna al nodo de su padre*/
-        void volver();
+        void volver(); //ESTE METODO NO ESTA EN LA IMPLEMENTACION DE LA CLASE
 
         /*************************************************************************************************/
 
@@ -57,7 +64,7 @@ class ArbolNario
         /*************************************************************************************************/
 
         /*POST: Devuelve el puntero al subárbol que empieza en el nodo en el que se halló el valor o NULL si no se halló el valor*/
-        NodoArbol* buscar(/*TAG*/);
+        //Lista<NodoArbol*>* buscarTag(NodoArbol* nodo,Lista<NodoArbol*>*& listaDeTag,string tag);
 
         /*************************************************************************************************/
 
@@ -67,17 +74,18 @@ class ArbolNario
         /*POST: salida del árbol por pantalla*/
         void imprimir(string tag);
         /*************************************************************************************************/
-        /*POST: Crea un subarbol a partir del nodo que se la pase como parámetro. No sé bien si va a servir esto. Capaz sea útil para
-        las funciones imprimir y para implementar de alguna forma recursiva la función buscar().*/
+        /*POST: Crea un subarbol a partir del nodo que se la pase como parámetro.*/ //VERIFICAR SI ESTO SIRVE
         ArbolNario* Subarbol(NodoArbol*);
 
+        /*************************************************************************************************/
         /*POST: Borra todos los Tag existentes en el arbol*/
-        void borrar();
+        void borrar();//ESTE METODO NO ESTA EN LA IMPLEMENTACION DE LA CLASE
 
         /*************************************************************************************************/
+
         NodoArbol* buscar(NodoArbol* raiz,string valor);
 
-        NodoArbol* getRaiz();
+
 };
 
 #endif // ARBOL N-ARIO_H

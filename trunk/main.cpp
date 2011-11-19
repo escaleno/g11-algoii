@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    ParserXML* parser = new ParserXML("C://Algo2//Tp Grupal 2do cuat 2011 - TRUNK//Test.xml");
+    ParserXML* parser = new ParserXML("C:\\Documents and Settings\\jlezcano\\Escritorio\\algoii\\Test.xml");
     ArbolNario* aXML = parser->procesarXML();
     NodoArbol* Recorrido;
     Recorrido = aXML->getRaiz();
@@ -22,7 +22,15 @@ int main()
     {
         cout << "No se pudo parsear el XML" << endl;
     }
+
+   //Lista<NodoArbol*>* listaDeTags = new Lista<NodoArbol*>;
+   //Lista<NodoArbol*>* plista;
+
+   //plista = aXML->buscarTag(aXML->getRaiz(),listaDeTags,"h6");
+
+
     delete nivel;
+    //delete plista;
     return 0;
 
 }
