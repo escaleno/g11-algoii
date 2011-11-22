@@ -177,7 +177,10 @@ void ArbolNario::imprimir(NodoArbol* nodo, unsigned nivel){
 		//*****fin del bloque*********************************************************
 		imprimir(nodo->getHijoIzq(), nivel);
 		//resto un nivel para no darle al hermano el nivel del hijo
-		if (nodo->getHermanoDer()) nivel--;
+		if (nodo->getHermanoDer()&& nodo->getHijoIzq())
+		{
+		    nivel--;
+		}
 		imprimir(nodo->getHermanoDer(), nivel);
 	}
 
@@ -227,7 +230,10 @@ void ArbolNario::imprimirXML(NodoArbol* nodo, unsigned nivel){
 
 		if (nodo->getHermanoDer())
 		{
-            nivel--;
+            if (nodo->getHijoIzq())
+            {
+                nivel--;
+            }
             this->imprimirXML(nodo->getHermanoDer(), nivel);
 		}
 	}
