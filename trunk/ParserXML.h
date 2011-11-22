@@ -1,3 +1,16 @@
+/*
+ * ParserXML.h
+ *
+ *  Created on: 15/11/2011
+ *      Author: jiesperon
+ */
+
+ /*ParserXML Parsea el XML para agregar el contenido en un Arbol.
+ *
+ * REFERENCIAS:
+ * nombreArchivoXML: direccion y nombre del archivo que se desea parsear como XML.
+ */
+
 #ifndef _PARSER_XML_H
 #define _PARSER_XML_H
 
