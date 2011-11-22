@@ -1,4 +1,10 @@
-	#include "ParserXML.h"
+/*
+ * ParserXML.cpp
+ *
+ *  Created on: 15/11/2011
+ *      Author: jiesperon
+ */
+#include "ParserXML.h"
 
 ParserXML::ParserXML(string nombreArchivo)
 {
