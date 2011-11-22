@@ -4,6 +4,7 @@
 using namespace std;
 
 /*************************************************************************************************/
+
 ArbolNario::ArbolNario()
 {
 	this->raiz = NULL;
@@ -11,6 +12,7 @@ ArbolNario::ArbolNario()
 }
 
 /*************************************************************************************************/
+
 void ArbolNario::LiberarMemoria (NodoArbol *Ptr)
 {
 	//Caso base. El puntero no apunta a ningún nodo. No hacemos nada.
@@ -25,23 +27,27 @@ void ArbolNario::LiberarMemoria (NodoArbol *Ptr)
 }
 
 /*************************************************************************************************/
+
 ArbolNario::~ArbolNario()
 {
 	this->LiberarMemoria(this->raiz);
 }
 
 /*************************************************************************************************/
+
 NodoArbol* ArbolNario::getRaiz(){
 	return this->raiz;
 }
 
 /*************************************************************************************************/
+
 bool ArbolNario::estaVacio()
 {
 	return (this->raiz==NULL && this->actual==NULL);
 }
 
 /*************************************************************************************************/
+
 bool ArbolNario::existeTag(string tag)
 {
 	NodoArbol* aux=actual;
@@ -65,6 +71,7 @@ bool ArbolNario::existeTag(string tag)
 }
 
 /*************************************************************************************************/
+
 void ArbolNario::agregar(string tag)
 {
 	NodoArbol* nuevo = new NodoArbol(tag);
@@ -95,6 +102,8 @@ void ArbolNario::agregar(string tag)
 	actual=nuevo;
 }
 
+/********************************************************************************/
+
 NodoArbol* ArbolNario::getHermano(NodoArbol* hijo)
 {
     if(hijo->getHermanoDer()!=NULL)
@@ -106,6 +115,7 @@ NodoArbol* ArbolNario::getHermano(NodoArbol* hijo)
 }
 
 /*************************************************************************************************/
+
 void ArbolNario::agregarContenido(string value)
 {
 	string* nuevCont = new string();
@@ -114,6 +124,7 @@ void ArbolNario::agregarContenido(string value)
 }
 
 /*************************************************************************************************/
+
 void ArbolNario::volver()
 {
 	if (actual->getPadre()!=NULL)
@@ -127,6 +138,7 @@ void ArbolNario::volver()
 }
 
 /*************************************************************************************************/
+
 string ArbolNario::getTag()
 {
 	if(!this->estaVacio())
@@ -150,6 +162,7 @@ void ArbolNario::buscarTag(NodoArbol* nodo,Lista<NodoArbol*>*& listaDeTag,string
 }
 
 /*************************************************************************************************/
+
 void ArbolNario::imprimir(NodoArbol* nodo, unsigned nivel){
 
 	if (nodo)
@@ -184,13 +197,39 @@ void ArbolNario::imprimir(NodoArbol* nodo, unsigned nivel){
 
 }
 
-void ArbolNario::tabuladorXML(unsigned nivel)
-{
-    for (unsigned i=0; i<nivel; i++)
-    {
-			cout << "  " ;
-    }
+/*************************************************************************************************/
+
+void ArbolNario::imprimirSinContenido(NodoArbol* nodo, unsigned nivel){
+
+	if (nodo)
+	{
+
+		//******bloque de operaciones a realizar en el nodo durante el recorrido******
+		for (unsigned i=0; i<nivel; i++)
+		{
+			cout << "  " << "|";
+		}
+		cout << "->";
+		cout << nodo->getTag();
+
+		if (nodo->getHijoIzq())
+		{
+            nivel++;
+		}
+		cout << endl;
+		//*****fin del bloque*********************************************************
+		imprimirSinContenido(nodo->getHijoIzq(), nivel);
+		//resto un nivel para no darle al hermano el nivel del hijo
+		if (nodo->getHermanoDer()&& nodo->getHijoIzq())
+		{
+		    nivel--;
+		}
+		imprimirSinContenido(nodo->getHermanoDer(), nivel);
+	}
+
 }
+
+/*************************************************************************************************/
 
 void ArbolNario::imprimirXML(NodoArbol* nodo, unsigned nivel){
 
@@ -239,9 +278,19 @@ void ArbolNario::imprimirXML(NodoArbol* nodo, unsigned nivel){
 }
 
 /*************************************************************************************************/
+
+void ArbolNario::tabuladorXML(unsigned nivel)
+{
+    for (unsigned i=0; i<nivel; i++)
+    {
+			cout << "  " ;
+    }
+}
+
+/*************************************************************************************************/
+
 void ArbolNario::imprimir(string tag)
 {
-	//NodoArbol* buscado = this->buscar(this->raiz,tag);
 	Lista<NodoArbol*>* larbol = new Lista<NodoArbol*>();
 	this->buscarTag(this->raiz,larbol,tag);
 	if (!larbol->lista_vacia())
@@ -250,47 +299,35 @@ void ArbolNario::imprimir(string tag)
 	    {
 	        this->imprimir(larbol->get_dato(i),0);
 	    }
+	}else
+	{
+		cout<<"Tag inexistente!"<<endl;
+	}
+}
+/*************************************************************************************************/
+void ArbolNario::imprimirSoloTag(string tag)
+{
+	//NodoArbol* buscado = this->buscar(this->raiz,tag);
+	Lista<NodoArbol*>* larbol = new Lista<NodoArbol*>();
+	this->buscarTag(this->raiz,larbol,tag);
+	if (!larbol->lista_vacia())
+	{
+	    for(unsigned i=1; i<=larbol->get_tam() ;i++)
+	    {
+	        this->imprimirSinContenido(larbol->get_dato(i),0);
+	    }
+	}else
+	{
+		cout<<"Tag inexistente!"<<endl;
 	}
 	//cout << "Tag encontrado: " << *(buscado->getContenido()) << endl ;
 
 
 }
 
-/*************************************************************************************************/
-ArbolNario* ArbolNario::Subarbol(NodoArbol* nuevoSubarbol)
-{
-	ArbolNario* nuevoArbol = new ArbolNario;
-	nuevoArbol->raiz = nuevoSubarbol;
-	return nuevoArbol;
-
-}
 
 /*************************************************************************************************/
-NodoArbol* ArbolNario::buscar(NodoArbol* raiz,string valor){
 
 
-	if(raiz->esHoja()){
-		if (raiz->getTag() == valor) return raiz;
-		else
-			return 0;
-	}
-
-
-	NodoArbol* nodo = 0;
-	NodoArbol* hijo = raiz->getHijoIzq();
-
-	while(hijo && !nodo){ //tiene hijo y no encontro
-		nodo = buscar(hijo,valor);
-		hijo = hijo->getHermanoDer();
-	}
-
-
-	if((!nodo) && (raiz->getTag() == valor)) //verifica que sea la raiz
-		nodo = raiz;
-
-	return nodo;
-}
-
-/*************************************************************************************************/
 
 

@@ -5,6 +5,7 @@
  *      Author: jiesperon
  */
 #include "ParserXML.h"
+/********************************************************************************/
 
 ParserXML::ParserXML(string nombreArchivo)
 {
@@ -21,10 +22,14 @@ ParserXML::ParserXML(string nombreArchivo)
     this->bufferData.clear();
 }
 
+/********************************************************************************/
+
 ParserXML::~ParserXML()
 {
     //Nada por ahora;
 }
+
+/********************************************************************************/
 
 ArbolNario* ParserXML::procesarXML()
 {
@@ -53,7 +58,7 @@ ArbolNario* ParserXML::procesarXML()
     return aXml;
 }
 
-
+/********************************************************************************/
 
 bool ParserXML::separarDatos(string str, ArbolNario* aXml)
 {
@@ -124,6 +129,8 @@ bool ParserXML::separarDatos(string str, ArbolNario* aXml)
     }
     return true;
 }
+
+/********************************************************************************/
 
 bool ParserXML::validateTag(ArbolNario* aXml)
 {
@@ -248,25 +255,36 @@ bool ParserXML::validateTag(ArbolNario* aXml)
     }
     return validate;
 }
+
+/********************************************************************************/
+
 bool ParserXML::existXML()
 {
     return this->xml && this->endTag;
 }
+
+/********************************************************************************/
 
 bool ParserXML::existTag()
 {
     return this->isXml && this->startTag && this->endTag;
 }
 
+/********************************************************************************/
+
 bool ParserXML::existTagValue()
 {
     return this->isXml && this->endTag && this->closeTag && this->valueTag;
 }
 
+/********************************************************************************/
+
 bool ParserXML::existcloseTag()
 {
     return this->isXml && !this->valueTag && this->closeTag && this->endTag;
 }
+
+/********************************************************************************/
 
 void ParserXML::trim(string &str)
 {
@@ -291,3 +309,5 @@ void ParserXML::trim(string &str)
 
     }
 }
+
+/********************************************************************************/

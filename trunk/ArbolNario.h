@@ -20,6 +20,7 @@ class ArbolNario
 
         /*************************************************************************************************/
 
+        /*POST:libera la memoria utilizada por el subarbol con raiz Ptr*/
         void LiberarMemoria (NodoArbol *Ptr);
 
         /*************************************************************************************************/
@@ -28,6 +29,7 @@ class ArbolNario
         ~ArbolNario();
 
         /*************************************************************************************************/
+
         /*POST:retorona un puntero a la raiz*/
         NodoArbol* getRaiz();
 
@@ -50,7 +52,7 @@ class ArbolNario
 
         /*PRE: hijo no vacio*/
         /*POST: busca en el hijo el hermano que este vacio*/
-        NodoArbol* ArbolNario::getHermano(NodoArbol* hijo);
+        NodoArbol* getHermano(NodoArbol* hijo);
 
         /*************************************************************************************************/
 
@@ -60,7 +62,7 @@ class ArbolNario
         /*************************************************************************************************/
 
         /*POST: El nodo actual retorna al nodo de su padre*/
-        void volver(); //ESTE METODO NO ESTA EN LA IMPLEMENTACION DE LA CLASE
+        void volver();
 
         /*************************************************************************************************/
 
@@ -75,8 +77,13 @@ class ArbolNario
         /*************************************************************************************************/
 
         /*PRE: arbol no tiene que estar vacio*/
-        /*POST: salida del árbol por pantalla*/
+        /*POST: salida del árbol por pantalla incluyendo el contenido de las hojas*/
         void imprimir(NodoArbol* nodo, unsigned);
+
+        /*************************************************************************************************/
+        /*PRE: arbol no tiene que estar vacio*/
+        /*POST: recorre el arbol para imprimir por pantalla sin incluir el contenido de las hojas*/
+        void imprimirSinContenido(NodoArbol* nodo, unsigned nivel);
 
         /*************************************************************************************************/
 
@@ -89,20 +96,16 @@ class ArbolNario
         /*POST: agrega tabulacion por cada nivel de cada hijo*/
         void tabuladorXML(unsigned nivel);
 
-        /*POST: salida del árbol por pantalla*/
+        /*************************************************************************************************/
+
+        /*POST: imprime los subarboles que tenga como raiz tag*/
         void imprimir(string tag);
-        /*************************************************************************************************/
-        /*POST: Crea un subarbol a partir del nodo que se la pase como parámetro.*/ //VERIFICAR SI ESTO SIRVE
-        ArbolNario* Subarbol(NodoArbol*);
 
         /*************************************************************************************************/
-        /*POST: Borra todos los Tag existentes en el arbol*/
-        void borrar();//ESTE METODO NO ESTA EN LA IMPLEMENTACION DE LA CLASE
+        /*POST:imprime por pantalla los subarboles que tengan como raiz a tag, no imprime el contenido de las hojas*/
+        void imprimirSoloTag(string tag);
 
         /*************************************************************************************************/
-
-        NodoArbol* buscar(NodoArbol* raiz,string valor);
-
 
 };
 
