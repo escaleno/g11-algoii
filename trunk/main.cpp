@@ -13,6 +13,7 @@ int main()
         //pregunto que desea imprimir antes de imprimir
         aXML->imprimir(aXML->getRaiz(), 0);
         aXML->imprimirXML(aXML->getRaiz(), 0);
+        aXML->imprimir("h2");
     }
     else
     {

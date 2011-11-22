@@ -137,19 +137,17 @@ string ArbolNario::getTag()
 }
 
 /*************************************************************************************************/
-/*Lista<NodoArbol*>* ArbolNario::buscarTag(NodoArbol* nodo,Lista<NodoArbol*>*& listaDeTag,string tag){
+void ArbolNario::buscarTag(NodoArbol* nodo,Lista<NodoArbol*>*& listaDeTag,string tag){
 
 	if(nodo != NULL){
 		if(nodo->getTag() == tag){
-			listaDeTag->agregar(nodo);
+			listaDeTag->insert(nodo);
 		}
 
 		buscarTag(nodo->getHijoIzq(),listaDeTag,tag);
 		buscarTag(nodo->getHermanoDer(),listaDeTag,tag);
 	}
-
-	return listaDeTag;
-}*/
+}
 
 /*************************************************************************************************/
 void ArbolNario::imprimir(NodoArbol* nodo, unsigned nivel){
@@ -243,8 +241,17 @@ void ArbolNario::imprimirXML(NodoArbol* nodo, unsigned nivel){
 /*************************************************************************************************/
 void ArbolNario::imprimir(string tag)
 {
-	NodoArbol* buscado = this->buscar(this->raiz,tag);
-	cout << "Tag encontrado: " << *(buscado->getContenido()) << endl ;
+	//NodoArbol* buscado = this->buscar(this->raiz,tag);
+	Lista<NodoArbol*>* larbol = new Lista<NodoArbol*>();
+	this->buscarTag(this->raiz,larbol,tag);
+	if (!larbol->lista_vacia())
+	{
+	    for(unsigned i=1; i<=larbol->get_tam() ;i++)
+	    {
+	        this->imprimir(larbol->get_dato(i),0);
+	    }
+	}
+	//cout << "Tag encontrado: " << *(buscado->getContenido()) << endl ;
 
 
 }

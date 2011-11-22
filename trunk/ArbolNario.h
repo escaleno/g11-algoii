@@ -2,7 +2,7 @@
 #define ARBOLNARIO_H
 
 #include "NodoArbol.h"
-//#include "Lista.h"
+#include "Lista.h"
 
 
 class ArbolNario
@@ -70,7 +70,7 @@ class ArbolNario
         /*************************************************************************************************/
 
         /*POST: Devuelve el puntero al subárbol que empieza en el nodo en el que se halló el valor o NULL si no se halló el valor*/
-        //Lista<NodoArbol*>* buscarTag(NodoArbol* nodo,Lista<NodoArbol*>*& listaDeTag,string tag);
+        void buscarTag(NodoArbol* nodo,Lista<NodoArbol*>*& listaDeTag,string tag);
 
         /*************************************************************************************************/
 
