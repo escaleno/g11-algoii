@@ -90,6 +90,8 @@ class ParserXML
         /*POST:Borra los espacios del principio y del final de str*/
         void trim(string &str);
 
+        /*************************************************************************************************/
+
 };
 
 #endif

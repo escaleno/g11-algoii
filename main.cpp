@@ -1,34 +1,21 @@
 #include <iostream>
 #include "ParserXML.h"
+#include "funciones.h"
 
 using namespace std;
 
-int main()
-{
-    ParserXML* parser = new ParserXML("C:\\Users\\gkgk\\Desktop\\Juani\\TPs\\TPxml\\tpxml\\Test.xml");
-    ArbolNario* aXML = parser->procesarXML();
+int main(){
+	ParserXML* parser = new ParserXML("D:\\Documents\\JohnAdq\\C++\\xmlfinal\\Test.xml");
+	ArbolNario* aXML = parser->procesarXML();
+	if(aXML){
+		menuPrincipal(aXML);
+	}
+	else{
+		cout << "No se pudo parsear el XML" << endl;
+	}
 
-    if(aXML)
-    {
-        //pregunto que desea imprimir antes de imprimir
-        aXML->imprimir(aXML->getRaiz(), 0);
-        aXML->imprimirXML(aXML->getRaiz(), 0);
-        aXML->imprimir("h2");
-    }
-    else
-    {
-        cout << "No se pudo parsear el XML" << endl;
-    }
-
-   //Lista<NodoArbol*>* listaDeTags = new Lista<NodoArbol*>;
-   //Lista<NodoArbol*>* plista;
-
-   //plista = aXML->buscarTag(aXML->getRaiz(),listaDeTags,"h6");
-
-
-    delete aXML;
-    //delete plista;
-
-    return 0;
-
+	delete aXML;
+	return 0;
 }
+
+
