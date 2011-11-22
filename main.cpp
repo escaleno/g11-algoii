@@ -7,15 +7,12 @@ int main()
 {
     ParserXML* parser = new ParserXML("C:\\Users\\gkgk\\Desktop\\Juani\\TPs\\TPxml\\tpxml\\Test.xml");
     ArbolNario* aXML = parser->procesarXML();
-    NodoArbol* Recorrido;
-    Recorrido = aXML->getRaiz();
 
     if(aXML)
     {
         //pregunto que desea imprimir antes de imprimir
-
-        aXML->imprimir(Recorrido, 0);
-        aXML->imprimirXML(Recorrido, 0);
+        aXML->imprimir(aXML->getRaiz(), 0);
+        aXML->imprimirXML(aXML->getRaiz(), 0);
     }
     else
     {

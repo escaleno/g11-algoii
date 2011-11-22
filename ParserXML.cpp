@@ -105,6 +105,15 @@ bool ParserXML::separarDatos(string str, ArbolNario* aXml)
         //      Acumulo caracteres simples.
             this->bufferData+=*It;
         }
+        if (this->raizCerrada)
+        {
+            this->trim(this->bufferData);
+            if (!this->bufferData.empty())
+            {
+                cout << "XML invalido" << endl;
+                return false;
+            }
+        }
         It++;
     }
     return true;
@@ -223,7 +232,7 @@ bool ParserXML::validateTag(ArbolNario* aXml)
         this->value.clear();
         this->bufferData.clear();
     }
-    else if (!this->isXml || this->raizCerrada)
+    else if (!this->isXml)
     {
         validate = false;
     }
