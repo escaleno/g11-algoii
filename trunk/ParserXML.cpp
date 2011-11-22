@@ -27,7 +27,9 @@ ArbolNario* ParserXML::procesarXML()
     ArbolNario* aXml= new ArbolNario();
     file.open(nombreArchivoXML.c_str());
     if (!file.good())
+    {
             cout << "No se pudo abrir el xml. " << nombreArchivoXML.c_str() << endl;
+    }
     else
     {
         while (!file.eof())
@@ -167,7 +169,6 @@ bool ParserXML::validateTag(ArbolNario* aXml)
             {
                 this->nivelTag++;
                 aXml->agregar(this->bufferData);
-                cout << "Abre: " << aXml->getTag() << " = " << this->nivelTag << endl;
             }
             else
             {
@@ -195,7 +196,6 @@ bool ParserXML::validateTag(ArbolNario* aXml)
         {
             /*Agrego el valor del tag*/
             aXml->agregarContenido(this->bufferData);
-            cout << "\tValue: " << this->bufferData << " = " << this->nivelTag << endl;
         }
         this->bufferData.clear();
     }
@@ -206,7 +206,6 @@ bool ParserXML::validateTag(ArbolNario* aXml)
         this->endTag=false;
         if(this->bufferData==aXml->getTag() && this->value.empty() && !this->raizCerrada)
         {
-            cout << "Cierra: " << aXml->getTag() << " = " << this->nivelTag << endl;
             /*vuelvo al padre*/
             aXml->volver();
             this->nivelTag--;

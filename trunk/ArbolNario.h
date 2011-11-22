@@ -48,6 +48,12 @@ class ArbolNario
 
         /*************************************************************************************************/
 
+        /*PRE: hijo no vacio*/
+        /*POST: busca en el hijo el hermano que este vacio*/
+        NodoArbol* ArbolNario::getHermano(NodoArbol* hijo);
+
+        /*************************************************************************************************/
+
         /*POST: Agrega el contenido a del Tag en el nodo*/
         void agregarContenido(string value);
 
@@ -68,8 +74,20 @@ class ArbolNario
 
         /*************************************************************************************************/
 
+        /*PRE: arbol no tiene que estar vacio*/
         /*POST: salida del árbol por pantalla*/
-        void imprimir(NodoArbol* nodo, unsigned *);
+        void imprimir(NodoArbol* nodo, unsigned);
+
+        /*************************************************************************************************/
+
+        /*PRE: arbol no tiene que estar vacio*/
+        /*POST: salida del árbol por pantalla en formato de XML*/
+        void imprimirXML(NodoArbol* nodo, unsigned);
+
+        /*************************************************************************************************/
+
+        /*POST: agrega tabulacion por cada nivel de cada hijo*/
+        void tabuladorXML(unsigned nivel);
 
         /*POST: salida del árbol por pantalla*/
         void imprimir(string tag);

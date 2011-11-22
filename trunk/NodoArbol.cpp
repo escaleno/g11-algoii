@@ -20,7 +20,7 @@ NodoArbol::NodoArbol(string tag){
 	this->hermanoDer = NULL;
 	this->padre = NULL;
 
-	//cout<<"Se contruyo NodoArbol "<<(unsigned)this<<endl;
+	cout<<"Se contruyo NodoArbol "<<(unsigned)this<<endl;
 
 }
 /******************************************************************************/
@@ -28,6 +28,9 @@ NodoArbol::~NodoArbol() {
 
 	if (this->contenido!=NULL)
 		delete this->contenido;
+	this->padre = NULL;
+
+	cout<<"se destruyo nodo "<<(unsigned)this<<endl;
 }
 
 /******************************************************************************/

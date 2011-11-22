@@ -5,18 +5,17 @@ using namespace std;
 
 int main()
 {
-    ParserXML* parser = new ParserXML("C:\\Documents and Settings\\jlezcano\\Escritorio\\algoii\\Test.xml");
+    ParserXML* parser = new ParserXML("C:\\Users\\gkgk\\Desktop\\Juani\\TPs\\TPxml\\tpxml\\Test.xml");
     ArbolNario* aXML = parser->procesarXML();
     NodoArbol* Recorrido;
     Recorrido = aXML->getRaiz();
-    unsigned* nivel = new unsigned;
-    *nivel = 0;
 
     if(aXML)
     {
         //pregunto que desea imprimir antes de imprimir
 
-        aXML->imprimir(Recorrido, nivel);
+        aXML->imprimir(Recorrido, 0);
+        aXML->imprimirXML(Recorrido, 0);
     }
     else
     {
@@ -29,8 +28,9 @@ int main()
    //plista = aXML->buscarTag(aXML->getRaiz(),listaDeTags,"h6");
 
 
-    delete nivel;
+    delete aXML;
     //delete plista;
+
     return 0;
 
 }

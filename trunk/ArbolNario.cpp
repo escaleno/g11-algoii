@@ -85,12 +85,24 @@ void ArbolNario::agregar(string tag)
 		}
 		else
 		{
+
+			NodoArbol* aux = this->getHermano(actual->getHijoIzq());
 			nuevo->setPadre(actual);
-			nuevo->setHermanoDer(actual->getHijoIzq());
-			actual->setHijoIzq(nuevo);
+			nuevo->setHermanoDer(NULL);
+			aux->setHermanoDer(nuevo);
 		}
 	}
 	actual=nuevo;
+}
+
+NodoArbol* ArbolNario::getHermano(NodoArbol* hijo)
+{
+    if(hijo->getHermanoDer()!=NULL)
+    {
+        return this->getHermano(hijo->getHermanoDer());
+    }
+
+    return hijo;
 }
 
 /*************************************************************************************************/
@@ -107,6 +119,10 @@ void ArbolNario::volver()
 	if (actual->getPadre()!=NULL)
 	{
 		actual=actual->getPadre();
+	}
+	else
+	{
+		actual=raiz;
 	}
 }
 
@@ -136,31 +152,84 @@ string ArbolNario::getTag()
 }*/
 
 /*************************************************************************************************/
-void ArbolNario::imprimir(NodoArbol* nodo, unsigned * nivel){
+void ArbolNario::imprimir(NodoArbol* nodo, unsigned nivel){
 
-	if (nodo != 0) {
+	if (nodo)
+	{
 
 		//******bloque de operaciones a realizar en el nodo durante el recorrido******
-		for (unsigned i=0; i<*nivel; i++)
+		for (unsigned i=0; i<nivel; i++)
 		{
-			cout << '\t' << "|";
+			cout << "  " << "|";
 		}
 		cout << "->";
 		cout << nodo->getTag();
 
-		if (nodo->getHijoIzq()) *nivel+=1;
+		if (nodo->getHijoIzq())
+		{
+            nivel++;
+		}
 		else
 		{
-			if ((!nodo->getHermanoDer())&&(*nivel !=0)) *nivel-=1;
 			cout << " = " << *(nodo->getContenido());
 		}
 		cout << endl;
 		//*****fin del bloque*********************************************************
 		imprimir(nodo->getHijoIzq(), nivel);
+		//resto un nivel para no darle al hermano el nivel del hijo
+		if (nodo->getHermanoDer()) nivel--;
 		imprimir(nodo->getHermanoDer(), nivel);
+	}
 
+}
 
+void ArbolNario::tabuladorXML(unsigned nivel)
+{
+    for (unsigned i=0; i<nivel; i++)
+    {
+			cout << "  " ;
+    }
+}
 
+void ArbolNario::imprimirXML(NodoArbol* nodo, unsigned nivel){
+
+	if (nodo)
+	{
+
+		//******bloque de operaciones a realizar en el nodo durante el recorrido******
+		this->tabuladorXML(nivel);
+		cout << "<";
+		cout << nodo->getTag();
+		cout << ">";
+
+		if (nodo->getHijoIzq())
+		{
+            cout << endl;
+            nivel++;
+
+		}
+		else
+		{
+			cout << *(nodo->getContenido());
+		}
+		//*****fin del bloque*********************************************************
+		this->imprimirXML(nodo->getHijoIzq(), nivel);
+
+		//Si tiene hijos agrego espacios para tabular xml
+		if(nodo->getHijoIzq())
+		{
+            this->tabuladorXML(nivel-1);
+		}
+		//Cierro Tag de cada Hijo
+		cout << "</";
+        cout << nodo->getTag();
+        cout << ">" << endl;
+
+		if (nodo->getHermanoDer())
+		{
+            nivel--;
+            this->imprimirXML(nodo->getHermanoDer(), nivel);
+		}
 	}
 
 }
