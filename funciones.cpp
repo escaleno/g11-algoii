@@ -8,9 +8,17 @@ unsigned opcionesMenu(){
 
     unsigned opcion;
     system("CLS");
-    cout<<"::::::PARSER XML::::::"<<endl;
-    cout<<""<<endl;
+    cout<<"########     ###    ########   ######  ######## ########     ##     ## ##     ## ##       "<<endl;
+    cout<<"##     ##   ## ##   ##     ## ##    ## ##       ##     ##     ##   ##  ###   ### ##       "<<endl;
+    cout<<"##     ##  ##   ##  ##     ## ##       ##       ##     ##      ## ##   #### #### ##       "<<endl;
+    cout<<"########  ##     ## ########   ######  ######   ########        ###    ## ### ## ##       "<<endl;
+    cout<<"##        ######### ##   ##         ## ##       ##   ##        ## ##   ##     ## ##       "<<endl;
+    cout<<"##        ##     ## ##    ##  ##    ## ##       ##    ##      ##   ##  ##     ## ##       "<<endl;
+    cout<<"##        ##     ## ##     ##  ######  ######## ##     ##    ##     ## ##     ## ######## "<<endl;
+    cout<<"------------------------------------------------------------------------------------------"<<endl;
+    cout <<endl;
     cout<<"OPCIONES: "<<endl;
+    cout<<endl;
     cout<<"1) Imprimir XML completo"<<endl;
     cout<<"2) Imprimir un tag cualquiera (con hijos y contenido)"<<endl;
     cout<<"3) Listar los hijos (solamente los nombre) de un tag dado"<<endl;
@@ -19,9 +27,17 @@ unsigned opcionesMenu(){
     cout<<""<<endl;
     cout<<"Ingrese una opcion: ";
     cin>>opcion;
-
-    return opcion;
+    if ((opcion <0) || (opcion > 3)){
+    	cout<<"Opcion invalida!"<<endl;
+    	mjePresioneCualquierTecla();
+    	system("CLS");
+    	return 100;
+    }else
+    {
+    	return opcion;
+    }
 }
+
 
 /**************************************************************************************/
 
@@ -32,7 +48,9 @@ void menuPrincipal(ArbolNario* aXML){
     string tag;
 
     do{
-        opcion = opcionesMenu();
+        do{
+    	opcion = opcionesMenu();
+        }while(opcion == 100);
 
         switch (opcion){
 
