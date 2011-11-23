@@ -162,7 +162,6 @@ void ArbolNario::buscarTag(NodoArbol* nodo,Lista<NodoArbol*>*& listaDeTag,string
 }
 
 /*************************************************************************************************/
-
 void ArbolNario::imprimir(NodoArbol* nodo, unsigned nivel){
 
 	if (nodo)
@@ -196,6 +195,7 @@ void ArbolNario::imprimir(NodoArbol* nodo, unsigned nivel){
 	}
 
 }
+
 
 /*************************************************************************************************/
 
@@ -288,43 +288,53 @@ void ArbolNario::tabuladorXML(unsigned nivel)
 }
 
 /*************************************************************************************************/
-
 void ArbolNario::imprimir(string tag)
 {
+	NodoArbol* unNodo;
 	Lista<NodoArbol*>* larbol = new Lista<NodoArbol*>();
 	this->buscarTag(this->raiz,larbol,tag);
 	if (!larbol->lista_vacia())
 	{
-	    for(unsigned i=1; i<=larbol->get_tam() ;i++)
+		for(unsigned i=1; i<=larbol->get_tam() ;i++)
 	    {
-	        this->imprimir(larbol->get_dato(i),0);
+			unNodo = larbol->get_dato(i);
+			if(unNodo->esHoja()){
+	        	cout<<"->"<<unNodo->getTag()<<" = "<<*(unNodo->getContenido())<<endl;;
+	        }else{
+	        	cout<<"->"<<unNodo->getTag()<<endl;;
+	        }
+			this->imprimir(larbol->get_dato(i)->getHijoIzq(),1);
+			cout<<endl;
 	    }
 	}else
 	{
 		cout<<"Tag inexistente!"<<endl;
 	}
+	delete larbol;
 }
+
 /*************************************************************************************************/
 void ArbolNario::imprimirSoloTag(string tag)
 {
-	//NodoArbol* buscado = this->buscar(this->raiz,tag);
+	NodoArbol* unNodo;
 	Lista<NodoArbol*>* larbol = new Lista<NodoArbol*>();
 	this->buscarTag(this->raiz,larbol,tag);
 	if (!larbol->lista_vacia())
 	{
-	    for(unsigned i=1; i<=larbol->get_tam() ;i++)
+		for(unsigned i=1; i<=larbol->get_tam() ;i++)
 	    {
-	        this->imprimirSinContenido(larbol->get_dato(i),0);
+			unNodo = larbol->get_dato(i);
+	        cout<<"->"<<unNodo->getTag()<<endl;;
+
+			this->imprimirSinContenido(larbol->get_dato(i)->getHijoIzq(),1);
+			cout<<endl;
 	    }
 	}else
 	{
 		cout<<"Tag inexistente!"<<endl;
 	}
-	//cout << "Tag encontrado: " << *(buscado->getContenido()) << endl ;
-
-
+	delete larbol;
 }
-
 
 /*************************************************************************************************/
 

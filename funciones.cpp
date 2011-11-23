@@ -36,14 +36,17 @@ void menuPrincipal(ArbolNario* aXML){
 
         switch (opcion){
 
-        case 1:  aXML->imprimirXML(aXML->getRaiz(), 0);
+        case 1: cout << endl;
+                aXML->imprimirXML(aXML->getRaiz(), 0);
         		mjePresioneCualquierTecla();
                 break;
         case 2:  tag = pideTag();
+                cout << endl;
         		aXML->imprimir(tag);
         		mjePresioneCualquierTecla();
                 break;
         case 3:  tag = pideTag();
+        		cout << endl;
         		aXML->imprimirSoloTag(tag);
         		mjePresioneCualquierTecla();
                 break;

@@ -47,6 +47,10 @@ class Lista
     // POST: libera el nodo que está en la posición pos
     // se toma 1 como el primero
     void del_dato(unsigned pos);
+  private:
+    // PRE: Lista con datos
+    // POST: obtiene el ultimo nodo
+    Nodo<Dato>* getUltimo(Nodo<Dato>* d);
 };
 
 template < typename Dato >
@@ -78,9 +82,13 @@ void Lista<Dato>::insert(Dato d)
     Nodo<Dato>* nuevo = new Nodo<Dato>(d);
     if (!(this->lista_vacia()))
     {
-        nuevo->set_sig(primero);
+        Nodo<Dato>* aux = this->getUltimo(this->primero);
+        aux->set_sig(nuevo);
     }
-    primero = nuevo;
+    else
+    {
+        primero = nuevo;
+    }
     tam++;
 }
 // Devuelve el dato que esta en la posición pos
@@ -124,4 +132,19 @@ void Lista<Dato>::del_dato(unsigned pos)
         tam--;
     }
 }
+
+//Busca el ultimo nodo
+template < typename Dato >
+Nodo<Dato>* Lista<Dato>::getUltimo(Nodo<Dato>* nodo)
+{
+    if(nodo->get_sig())
+    {
+        return this->getUltimo(nodo->get_sig());
+    }
+    else
+    {
+        return nodo;
+    }
+}
+
 #endif
