@@ -40,6 +40,8 @@ ArbolNario* ParserXML::procesarXML()
     if (!file.good())
     {
             cout << "No se pudo abrir el xml. " << nombreArchivoXML.c_str() << endl;
+            delete aXml;
+            aXml=NULL;
     }
     else
     {
@@ -50,7 +52,8 @@ ArbolNario* ParserXML::procesarXML()
             if (!this->separarDatos(buff,aXml))
             {
                 delete aXml;
-                return 0;
+                aXml=NULL;
+                break;
             }
         }
     }
