@@ -8,14 +8,21 @@ unsigned opcionesMenu(){
 
     unsigned opcion;
     system("CLS");
-    cout<<"########     ###    ########   ######  ######## ########     ##     ## ##     ## ##       "<<endl;
+    /*cout<<"########     ###    ########   ######  ######## ########     ##     ## ##     ## ##       "<<endl;
     cout<<"##     ##   ## ##   ##     ## ##    ## ##       ##     ##     ##   ##  ###   ### ##       "<<endl;
     cout<<"##     ##  ##   ##  ##     ## ##       ##       ##     ##      ## ##   #### #### ##       "<<endl;
     cout<<"########  ##     ## ########   ######  ######   ########        ###    ## ### ## ##       "<<endl;
     cout<<"##        ######### ##   ##         ## ##       ##   ##        ## ##   ##     ## ##       "<<endl;
     cout<<"##        ##     ## ##    ##  ##    ## ##       ##    ##      ##   ##  ##     ## ##       "<<endl;
     cout<<"##        ##     ## ##     ##  ######  ######## ##     ##    ##     ## ##     ## ######## "<<endl;
-    cout<<"------------------------------------------------------------------------------------------"<<endl;
+    cout<<"------------------------------------------------------------------------------------------"<<endl;*/
+    cout<<"888888ba                                                  dP    dP 8888ba.88ba  dP        "<<endl;
+    cout<<"88    `8b                                                 Y8.  .8P 88  `8b  `8b 88        "<<endl;
+    cout<<"a88aaaa8P' .d8888b. 88d888b. .d8888b. .d8888b. 88d888b.    Y8aa8P  88   88   88 88        "<<endl;
+    cout<<"88        88'  `88 88'  `88 Y8ooooo. 88ooood8 88'  `88    d8'  `8b 88   88   88 88        "<<endl;
+    cout<<"88        88.  .88 88             88 88.  ... 88          88    88 88   88   88 88        "<<endl;
+    cout<<"dP        `88888P8 dP       `88888P' `88888P' dP          dP    dP dP   dP   dP 88888888P "<<endl;
+    cout<<"ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"<<endl;
     cout <<endl;
     cout<<"OPCIONES: "<<endl;
     cout<<endl;
