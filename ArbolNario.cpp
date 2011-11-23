@@ -305,6 +305,8 @@ void ArbolNario::imprimir(string tag)
 	        }
 			this->imprimir(larbol->get_dato(i)->getHijoIzq(),1);
 			cout<<endl;
+			cout<<"--------------------------------------------------------------------"<<endl;
+			cout<<endl;
 	    }
 	}else
 	{
@@ -327,6 +329,8 @@ void ArbolNario::imprimirSoloTag(string tag)
 	        cout<<"->"<<unNodo->getTag()<<endl;;
 
 			this->imprimirSinContenido(larbol->get_dato(i)->getHijoIzq(),1);
+			cout<<endl;
+			cout<<"--------------------------------------------------------------------"<<endl;
 			cout<<endl;
 	    }
 	}else

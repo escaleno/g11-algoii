@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-	ParserXML* parser = new ParserXML("C:\\Users\\gkgk\\Desktop\\Juani\\TPs\\TPxml\\Test.xml");
+	ParserXML* parser = new ParserXML("C:\\Documents and Settings\\jlezcano\\Escritorio\\algoii\\Test.xml");
 	ArbolNario* aXML = parser->procesarXML();
 	if(aXML){
 		menuPrincipal(aXML);
