@@ -37,35 +37,11 @@ class ParserXML
         bool valueTag;
         bool raizCerrada;
 
-    public:
-
-        /*************************************************************************************************/
-
-        /*PRE:el nomberArchivo tiene el nombre y la direccion del XML que se quiere procesar*/
-        /*POST:creal el Parser del XML con el archivo que se desea procesar*/
-        ParserXML(string nombreArchivo);
-
-        /*************************************************************************************************/
-
-        /*POST:Nada*/
-        ~ParserXML();
-
-        /*************************************************************************************************/
-
-        /*POST:procesa el tag y retorna el un arbol con el contenido del XML*/
-        ArbolNario* procesarXML();
-
-        /*************************************************************************************************/
-
-        /*POST:Verifica los serparadores de los TAG y para validar los TAG y agregarlo al arbol*/
-        bool separarDatos(string str, ArbolNario* aXml);
-
         /*************************************************************************************************/
 
         /*POST:Valida el contenido del XML y agrega cada TAG al arbol*/
         bool validateTag(ArbolNario* aXml);
-
-        /*************************************************************************************************/
+                /*************************************************************************************************/
 
         /*POST: retorna verdadero si contien "<? >"*/
         bool existXML();
@@ -89,6 +65,30 @@ class ParserXML
 
         /*POST:Borra los espacios del principio y del final de str*/
         void trim(string &str);
+
+
+    public:
+
+        /*************************************************************************************************/
+
+        /*PRE:el nomberArchivo tiene el nombre y la direccion del XML que se quiere procesar*/
+        /*POST:creal el Parser del XML con el archivo que se desea procesar*/
+        ParserXML(string nombreArchivo);
+
+        /*************************************************************************************************/
+
+        /*POST:Nada*/
+        ~ParserXML();
+
+        /*************************************************************************************************/
+
+        /*POST:procesa el tag y retorna el un arbol con el contenido del XML*/
+        ArbolNario* procesarXML();
+
+        /*************************************************************************************************/
+
+        /*POST:Verifica los serparadores de los TAG y para validar los TAG y agregarlo al arbol*/
+        bool separarDatos(string str, ArbolNario* aXml);
 
         /*************************************************************************************************/
 

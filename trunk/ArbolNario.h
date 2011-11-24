@@ -10,6 +10,26 @@ class ArbolNario
     private:
         NodoArbol* raiz;
         NodoArbol* actual;
+        /*************************************************************************************************/
+
+        /*POST: agrega tabulacion por cada nivel de cada hijo*/
+        void tabuladorXML(unsigned nivel);
+        /*************************************************************************************************/
+
+        /*PRE: arbol no tiene que estar vacio*/
+        /*POST: salida del árbol por pantalla incluyendo el contenido de las hojas*/
+        void imprimir(NodoArbol* nodo, unsigned);
+
+
+        /*************************************************************************************************/
+        /*PRE: arbol no tiene que estar vacio*/
+        /*POST: recorre el arbol para imprimir por pantalla sin incluir el contenido de las hojas*/
+        void imprimirSinContenido(NodoArbol* nodo, unsigned nivel);
+
+        /*************************************************************************************************/
+
+        /*POST:libera la memoria utilizada por el subarbol con raiz Ptr*/
+        void LiberarMemoria (NodoArbol *Ptr);
 
     public:
 
@@ -18,10 +38,6 @@ class ArbolNario
         /*POST:creal el arbol con la raíz y la posicion actual apuntando a NULL*/
         ArbolNario();
 
-        /*************************************************************************************************/
-
-        /*POST:libera la memoria utilizada por el subarbol con raiz Ptr*/
-        void LiberarMemoria (NodoArbol *Ptr);
 
         /*************************************************************************************************/
 
@@ -74,16 +90,6 @@ class ArbolNario
         /*POST: Devuelve el puntero al subárbol que empieza en el nodo en el que se halló el valor o NULL si no se halló el valor*/
         void buscarTag(NodoArbol* nodo,Lista<NodoArbol*>*& listaDeTag,string tag);
 
-        /*************************************************************************************************/
-
-        /*PRE: arbol no tiene que estar vacio*/
-        /*POST: salida del árbol por pantalla incluyendo el contenido de las hojas*/
-        void imprimir(NodoArbol* nodo, unsigned);
-
-        /*************************************************************************************************/
-        /*PRE: arbol no tiene que estar vacio*/
-        /*POST: recorre el arbol para imprimir por pantalla sin incluir el contenido de las hojas*/
-        void imprimirSinContenido(NodoArbol* nodo, unsigned nivel);
 
         /*************************************************************************************************/
 
@@ -91,10 +97,6 @@ class ArbolNario
         /*POST: salida del árbol por pantalla en formato de XML*/
         void imprimirXML(NodoArbol* nodo, unsigned);
 
-        /*************************************************************************************************/
-
-        /*POST: agrega tabulacion por cada nivel de cada hijo*/
-        void tabuladorXML(unsigned nivel);
 
         /*************************************************************************************************/
 
